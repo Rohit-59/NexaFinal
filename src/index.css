@@ -1,0 +1,419 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,600,300,800);
+
+/* index.css */
+
+/* General Styles */
+body {
+  overflow-x: hidden;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  line-height: 1;
+  color: #fff;
+  /* background: #da8a5f; */
+  /* background: #FFFAE6; */
+  background-image: linear-gradient( 103.3deg,  rgba(252,225,208,1) 30%, rgba(255,173,214,1) 55.7%, rgb(200, 212, 245) 89.8% );
+}
+
+
+
+.container {
+  width: 73%;
+  margin: 0 auto;
+  padding: 20px;
+  /* background-color: #e5e2e4; */
+  background-color: #FFFFFF;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  border: 0.5px solid #595050;
+  border-radius: 5px;
+}
+
+h1,
+h2,
+h4 {
+  font-weight: 800;
+  color: #0033E7;
+}
+
+h1 {
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
+h2 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+h4 {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+/* File Input Styles */
+.file-input-container {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.file-input-container h4 {
+  margin-bottom: 5px;
+}
+
+input[type="file"] {
+  border: 1px solid #CCCCCC;
+  padding: 5px;
+  font-size: 1em;
+}
+
+#carSelection {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10px; /* Adjust the gap between items as needed */
+}
+
+.carsFMInput {
+  margin-right: 5px; /* Adjust the spacing between checkbox and label */
+}
+
+/* Form Styles */
+form {
+  margin-top: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+}
+
+/* Qualifying Condition Styles */
+.qcContainer {
+  background-color: #EFEFEF;
+  padding: 20px;
+  margin-bottom: 20px;
+  border: 2px solid gray;
+  border-radius: 5px;
+}
+
+#qcInputs {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+#carSelection {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+#carSelection label {
+  margin-right: 15px;
+}
+
+#qcInputs div {
+  display: flex;
+  justify-content: space-evenly;
+  /* margin-bottom: 10px; */
+  flex-wrap: wrap
+}
+
+.QCInput {
+  margin-bottom: 13px;
+}
+
+/* New DSE Section Styles */
+.newDSEContainer {
+  background-color: #EFEFEF;
+  padding: 20px;
+  margin-bottom: 20px;
+  border: 2px solid gray;
+  border-radius: 5px;
+}
+
+.newDSE-section {
+  margin-bottom: 10px;
+}
+
+/* Incentive Sections Styles */
+.DSECarIncentive,
+.SuperCar-container {
+  background-color: #EFEFEF;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+
+/* #perModelPairContainer,
+#specialCarPairContainer,
+#Exchange-pairs-container,
+#Complaint-pairs-container {
+  margin: 20px 0;
+  padding: 10px auto;
+  background-color: #EFEFEF;
+  border: 2px solid #989898;
+  border-radius: 5px;
+} */
+
+.collapsible {
+  background-color: #1c1919;
+  cursor: pointer;
+  padding: 10px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.3s;
+}
+
+.collapsible:hover {
+  background-color: #574949;
+  color: #f1f6f5;
+}
+
+.collapsible::after {
+  content: "\25BA"; /* Right-pointing arrow */
+  font-size: 13px;
+  transition: transform 0.3s;
+}
+
+.collapsible.active::after {
+  transform: rotate(90deg); /* Rotate to point downwards */
+}
+
+.DSECarIncentive,
+.SuperCar-container,
+.specialCarPairSection,
+.CDI-section,
+.discountIncentive-section,
+.MGA-section,
+.EW-section,
+.MSR-section,
+.ExchangePairSection,
+.ComplaintSection,
+.ccp-section,
+.MSSF-section,
+.EB-section,
+.GNA-section,
+.inputFile-section {
+  margin: 20px 0;
+  padding: 15px;
+  background-color: #EFEFEF;
+  border: 2px solid #989898;
+  border-radius: 5px;
+}
+
+
+
+.pair-container,
+.perModelPairContainer,
+.specialCarPairContainer,
+.Exchange-pair-container,
+.Complaint-pair-container,
+.Number-pair-container,
+.Progressive-pair-container,
+.inputGroup,
+.cdiInput,
+.CCPinputGroup,
+.MSSFinputGroup,
+.DinputGroup,
+.GNAinputGroup,
+.MGAinputGroup,
+.EBinputGroup  {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-bottom: 10px;
+  background-color: #EFEFEF;
+}
+
+/* For input size */
+@media (max-width: 1402px) {
+.pair-container input,
+.perModelPairContainer input,
+.specialCarPairContainer input,
+.Exchange-pair-container input,
+.Complaint-pair-container input,
+.Number-pair-container input,
+.Progressive-pair-container input,
+.inputGroup input,
+.cdiInput input,
+.CCPinputGroup input,
+.MSSFinputGroup input,
+.DinputGroup input,
+.GNAinputGroup input,
+.EBinputGroup input,
+.MGAinputGroup input {
+width: 50%;
+}
+}
+
+
+
+.SuperCarSelection-container {
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 10px;
+  background-color: #EFEFEF;
+}
+
+
+input{
+  color: #3f3f3f;
+}
+
+select,
+input[type="number"] {
+  
+  padding: 5px;
+  font-size: 1em;
+  margin-left: 10px;
+}
+
+input[type="file"] {
+  margin: auto;
+  padding: 5px;
+  font-size: 1em;
+  margin-left: 10px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #02081b;
+  color: #FFFFFF;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  margin: 10px 0;
+}
+
+button:hover {
+  background-color: #333333;
+}
+
+/* Hidden Class */
+.hidden {
+  display: none;
+ 
+
+}
+
+/* Dynamic Inputs Container Styles */
+#cdiInputs,
+#DiscountInputsContainer,
+#MGAinputsContainer,
+#EBinputsContainer,
+#EWinputsContainer,
+#MSRinputsContainer,
+#CCPinputsContainer,
+#MSSFinputsContainer {
+  margin-top: 20px;
+}
+
+label {
+  color: #1F1A17;
+}
+
+select {
+  color: #1F1A17;
+}
+
+/* style for table */
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  overflow-x:auto;
+  width: 100%;
+  background-color: #fff;
+  color: black;
+  margin: 10px 2px;
+  display: block;
+}
+
+td,
+th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th,
+td {
+  border: 1px solid black;
+  padding: 8px;
+  word-wrap: break-word;
+  /* Wrap long words */
+  overflow-wrap: break-word;
+  /* Break words to prevent overflow */
+  max-width: 200px;
+  /* Set max width to prevent cell from growing indefinitely */
+}
+/* 
+<div class="errormsg" id="errormsgSales">
+<h3 class="errorHead" id="errorHeadSales"></h3>
+<ul class="ErrorList" id="salesError"></ul>
+</div> */
+
+
+.errormsg {
+   /* Remove default list style */
+  padding: 10px; /* Add some padding */
+  margin: 10px auto; /* Add some margin between lists */
+  border: 2px solid #f00; /* Red border to highlight error lists */
+  border-radius: 5px; /* Rounded corners */
+  background-color: #ffe6e6; /* Light red background color */
+  display: none;
+  width: 65%;
+  
+}
+
+.errorHead {
+  font-size: 1em; /* Larger font size for header */
+  color: #d00; /* Dark red color for header text */
+  margin: 0 0 10px 0; /* Margin to separate header from list items */
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+ul{
+  list-style-type: none;
+}
+ul.ErrorList {
+  list-style-type: none; /* Remove default list styles */
+  padding-left: 0; /* Remove default padding */
+}
+
+ul.ErrorList li {
+  font-size: 1em; /* Standard font size for list items */
+  color: #900; /* Dark red color for error text */
+  margin: 5px 0; /* Margin between list items */
+  padding-left: 20px; /* Indentation for list items */
+  position: relative; /* Position relative to add custom bullet */
+  font-weight: 600;
+}
+
+ul.ErrorList li::before {
+  content: '⚠️ '; /* Custom warning icon */
+  color: #d00; /* Dark red color for icon */
+  position: absolute; /* Position icon absolutely */
+  left: 0; /* Align icon to the left */
+  /* top: 0; Align icon to the top */
+  top: 50%; /* Align icon vertically centered */
+  transform: translateY(-50%); /* Adjust for vertical centering */
+  font-size: 1em; /* Font size for icon */
+  margin-right: 10px; /* Space between icon and text */
+}

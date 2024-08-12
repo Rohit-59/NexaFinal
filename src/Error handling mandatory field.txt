@@ -1,0 +1,5 @@
+Error handling mandatory field 
+Error in "Model Name" Column heading
+Click Reset button before calculating again.
+
+Put focus if error display

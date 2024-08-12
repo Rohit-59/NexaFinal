@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Incentive Calculator</title>
+    <link rel="stylesheet" href="index.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    &nbsp;&nbsp;&nbsp;
+    <h1 style="text-align: center; color: #0e0a04">Maruti</h1>
+    <h1 style="text-align: center; color: #0e0a04">Incentive Calculator</h1>
+
+    <div class="errormsg" id="errormsgSales">
+      <h3 class="errorHead" id="errorHeadSales"></h3>
+      <ul class="ErrorList" id="salesError"></ul>
+    </div>
+
+    <div class="errormsg" id="errormsgMGA">
+      <h3 class="errorHead" id="errorHeadMGA"></h3>
+      <ul class="ErrorList" id="MGAError"></ul>
+    </div>
+
+    <div class="errormsg" id="errormsgStatus">
+      <h3 class="errorHead" id="errorHeadStatus"></h3>
+      <ul class="ErrorList" id="StatusError"></ul>
+    </div>
+
+    <div class="errormsg" id="errormsgCDI">
+      <h3 class="errorHead" id="errorHeadCDI"></h3>
+      <ul class="ErrorList" id="CDIError"></ul>
+    </div>
+    <div style="display: flex; margin: 20px;">
+      <span
+        id="errorresetButton"
+        style="color: #FFFFFF; font-weight: bolder; margin: auto; filter: drop-shadow(2px 4px 6px black);" 
+      ></span>
+    </div>
+
+    <div class="container" style="text-align: center">
+      <div class="inputFile-section" >
+        <h4 style="text-align: center; color: #1f1a17">
+          Choose Your file to upload.
+        </h4>
+        <div class="file-input-container-1" style=" margin: 20px;"">
+          <h4 style="text-align: center; color: #1f1a17">Sales Excel</h4>
+          <input
+            class="balloon"
+            type="file"
+            name="file"
+            id="file-input-salesExcel"
+            required
+          />
+        </div>
+        <span id="file-input-salesExcelError" style="color: red; display: inline;"></span>
+        
+        <div class="file-input-container-2" style=" margin: 20px;">
+          <h4 style="text-align: center; color: #1f1a17">CDI Score excel</h4>
+          <input
+          class="balloon"
+          type="file"
+          name="file"
+          id="file-input-CDIScore"
+          required
+          />
+        </div>
+        <span id="file-input-CDIExcelError" style="color: red; display: inline;"></span>
+      </div>
+      <form id="myForm">
+        <!-- check qualifing Condition -->
+
+        <button type="button" class="collapsible">Qualifying Condition</button>
+        <div class="qcContainer hidden">
+          <h2 style="color: #1f1a17">Qualifying Condition</h2>
+          <div
+            id="qcInputs"
+            style="
+              display: flex;
+              padding: 20px;
+              flex-direction: column;
+              margin-bottom: 20px;
+            "
+          >
+            <div
+              class="QCInput"
+              style="display: flex; justify-content: space-evenly;  margin: 20px;"
+            >
+              <label for="carSelection" style="color: #1f1a17"
+                >Select Focus Model Cars:</label
+              ><span style="color: red; font-weight: bolder">*</span>
+              <div id="carSelection required">
+                <label style="color: #1f1a17"
+                  ><input type="checkbox" name="carsFM" value="ALTO" />
+                  ALTO</label
+                >
+                <label style="color: #1f1a17"
+                  ><input type="checkbox" name="carsFM" value="ALTO K-10" />ALTO
+                  K-10</label
+                >
+                <label style="color: #1f1a17"
+                  ><input type="checkbox" name="carsFM" value="S-Presso" />
+                  S-Presso</label
+                >
+                <label style="color: #1f1a17"
+                  ><input type="checkbox" name="carsFM" value="CELERIO" />
+                  CELERIO</label
+                >
+                <label style="color: #1f1a17"
+                  ><input type="checkbox" name="carsFM" value="WagonR" />
+                  WagonR</label
+                >
+                <label style="color: #1f1a17"
+                  ><input type="checkbox" name="carsFM" value="BREZZA" />
+                  BREZZA</label
+                >
+                <label style="color: #1f1a17"
+                  ><input type="checkbox" name="carsFM" value="DZIRE" />
+                  DZIRE</label
+                >
+                <label style="color: #1f1a17"
+                  ><input type="checkbox" name="carsFM" value="EECO" />
+                  EECO</label
+                >
+                <label style="color: #1f1a17"
+                  ><input type="checkbox" name="carsFM" value="Ertiga" />
+                  Ertiga</label
+                >
+                <label style="color: #1f1a17"
+                  ><input type="checkbox" name="carsFM" value="SWIFT" />
+                  SWIFT</label
+                >
+              </div>
+            </div>
+            <span id="checkboxError" style="color: red; display: inline"></span>
+
+            <div
+              class="QCInput"
+              style="display: flex; justify-content: space-between; margin: 20px;"
+            >
+        <label for="numCars" style="color: #1f1a17">Number of Cars:<span style="color: red; font-weight: bolder"
+                  >*</span></label
+              >
+              <input type="number" id="numCars" name="numCars" />
+            </div>
+            <span id="numCarsError" style="color: red; display: inline"></span>
+
+            <div
+              class="QCInput"
+              style="
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+              "
+            >
+              <label for="autocard" style="color: #1f1a17">AutoCard:</label>
+              <input
+                type="checkbox"
+                id="autocard"
+                name="autocard"
+                value="yes"
+                onchange="
+            var divToToggle = document.getElementById('autoValue');
+            divToToggle.getElementsByTagName('input')[0].disabled = !this.checked;"
+              />
+              <div
+                id="autoValue"
+                class="autocardPercent-container"
+                style="display: flex; align-items: center"
+              >
+                <label for="autocardPercent" style="color: #1f1a17"
+                  >AutoCard Percent:</label
+                >
+                <input
+                  type="number"
+                  id="autocardPercent"
+                  name="autocardPercent"
+                  value="100"
+                  disabled
+                />
+              </div>
+            </div>
+
+            <div
+              class="QCInput"
+              style="
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+              "
+            >
+              <label for="ew" style="color: #1f1a17">EW:</label>
+              <input
+                type="checkbox"
+                id="ew"
+                name="ew"
+                value="yes"
+                onchange="
+            var divToToggle = document.getElementById('eWAmnt');
+            divToToggle.getElementsByTagName('input')[0].disabled = !this.checked;"
+              />
+              <div
+                id="eWAmnt"
+                class="ewdPercent-container"
+                style="display: flex; align-items: center"
+              >
+                <label for="ewdPercent" style="color: #1f1a17"
+                  >EW Percent:</label
+                >
+                <input
+                  type="number"
+                  id="ewdPercent"
+                  name="ewdPercent"
+                  value="100"
+                  disabled
+                />
+              </div>
+            </div>
+
+            <!-- Test -->
+
+            <div
+              class="QCInput"
+              style="
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+              "
+            >
+              <label for="CCP" style="color: #1f1a17">CCP: </label>
+              <input
+                type="checkbox"
+                id="CCP"
+                name="CCP"
+                value="yes"
+                onchange="
+            var divToToggle = document.getElementById('CCPAmnt');
+            divToToggle.getElementsByTagName('input')[0].disabled = !this.checked;"
+              />
+              <div
+                id="CCPAmnt"
+                class="CCPPercent-container"
+                style="display: flex; align-items: center"
+              >
+                <label for="CCPPercent" style="color: #1f1a17"
+                  >CCP Percent:</label
+                >
+                <input
+                  type="number"
+                  id="CCPPercent"
+                  name="CCPPercent"
+                  value="100"
+                  disabled
+                />
+              </div>
+            </div>
+
+            <div
+              class="QCInput"
+              style="
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+              "
+            >
+              <label for="MSSF" style="color: #1f1a17">MSSF:</label>
+              <input
+                type="checkbox"
+                id="MSSF"
+                name="MSSF"
+                value="yes"
+                onchange="
+            var divToToggle = document.getElementById('MSSFAmnt');
+            divToToggle.getElementsByTagName('input')[0].disabled = !this.checked;"
+              />
+              <div
+                id="MSSFAmnt"
+                class="MSSFPercent-container"
+                style="display: flex; align-items: center"
+              >
+                <label for="MSSFPercent" style="color: #1f1a17"
+                  >MSSF Percent:</label
+                >
+                <input
+                  type="number"
+                  id="MSSFPercent"
+                  name="MSSFPercent"
+                  value="100"
+                  disabled
+                />
+              </div>
+            </div>
+
+            <div
+              class="QCInput"
+              style="display: flex; justify-content: space-between"
+            >
+              <label for="MGA" style="color: #1f1a17">MGA:</label>
+              <input
+                type="checkbox"
+                id="MGA"
+                name="MGA"
+                value="yes"
+                onchange="
+            var divToToggle = document.getElementById('MGAC');
+            divToToggle.getElementsByTagName('input')[0].disabled = !this.checked;"
+              />
+              <div
+                id="MGAC"
+                class="MGAAmount-container"
+                style="display: flex; align-items: center"
+              >
+                <label for="MGAAmount" style="color: #1f1a17"
+                  >MGA Amount:</label
+                >
+                <input
+                  type="number"
+                  id="MGAAmount"
+                  name="MGAAmount"
+                  placeholder="Enter MGA Amount"
+                  disabled
+                />
+              </div>
+            </div>
+
+            <div
+              class="QCInput"
+              style="display: flex; justify-content: space-between"
+            >
+              <label for="Discount" style="color: #1f1a17"
+                >Discount Slab:</label
+              >
+              <input
+                type="checkbox"
+                id="Discount"
+                name="Discount"
+                value="yes"
+                onchange="
+            var divToToggle = document.getElementById('DiscountAmnt');
+            divToToggle.getElementsByTagName('input')[0].disabled = !this.checked;"
+              />
+              <div
+                id="DiscountAmnt"
+                class="DiscountAmount-container"
+                style="display: flex; align-items: center"
+              >
+                <label for="DiscountAmount" style="color: #1f1a17"
+                  >Discount Amount:</label
+                >
+                <input
+                  type="number"
+                  id="DiscountAmount"
+                  name="DiscountAmount"
+                  placeholder="Enter Avg.Discount/DSE"
+                  disabled
+                />
+              </div>
+            </div>
+
+            <div
+              class="QCInput"
+              style="display: flex; justify-content: space-between"
+            >
+              <label for="Exchange" style="color: #1f1a17">Exchange :</label>
+              <input
+                type="checkbox"
+                id="Exchange"
+                name="Exchange"
+                value="yes"
+                onchange="
+            var divToToggle = document.getElementById('ExchangeAmnt');
+            divToToggle.getElementsByTagName('input')[0].disabled = !this.checked;"
+              />
+              <div
+                id="ExchangeAmnt"
+                class="ExchangeAmount-container"
+                style="display: flex; align-items: center"
+              >
+                <label for="ExchangeCount" style="color: #1f1a17"
+                  >Exchange Count:</label
+                >
+                <input
+                  type="number"
+                  id="ExchangeCount"
+                  name="ExchangeCount"
+                  placeholder="Enter MIN.Exchange"
+                  disabled
+                />
+              </div>
+            </div>
+
+            <div
+              class="QCInput"
+              style="display: flex; justify-content: space-between"
+            >
+              <label for="Complaint" style="color: #1f1a17">Complaint :</label>
+              <input
+                type="checkbox"
+                id="Complaint"
+                name="Complaint"
+                value="yes"
+                onchange="
+            var divToToggle = document.getElementById('ComplaintAmnt');
+            divToToggle.getElementsByTagName('input')[0].disabled = !this.checked;"
+              />
+              <div
+                id="ComplaintAmnt"
+                class="ComplaintCount-container"
+                style="display: flex; align-items: center"
+              >
+                <label for="ComplaintCount" style="color: #1f1a17"
+                  >Complaint Count:</label
+                >
+                <input
+                  type="number"
+                  id="ComplaintCount"
+                  name="ComplaintCount"
+                  placeholder="Enter MAX.Complaint"
+                  disabled
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <button type="button" class="collapsible">New DSE Incentive</button>
+        <div class="newDSEContainer hidden">
+          <h2 class="newDSE-section" style="color: #1f1a17">
+            New DSE Percar Incentive :
+          </h2>
+          <br />
+          <div style="display: flex; justify-content: space-evenly">
+            <label for="newDSEInput" style="color: #1f1a17"
+              >Per car incentive:</label
+            >
+            <input type="number" id="newDSEInput" name="newDSEInput" />
+          </div>
+          <br />
+          <div style="display: flex; justify-content: space-evenly">
+            <label for="newDSEMcarsInput" style="color: #1f1a17"
+              >Minimum Cars:</label
+            >
+            <input
+              type="number"
+              id="newDSEMcarsInput"
+              name="newDSEMcarsInput"
+            />
+          </div>
+        </div>
+
+        <button type="button" class="collapsible">DSE Car Incentive</button>
+
+        <div class="DSECarIncentive hidden">
+          <label for="sectionSelect" style="color: #1f1a17"
+            >Select Section:</label
+          >
+          <select id="sectionSelect">
+            <option value="perCarIncentive">Per Car Incentive</option>
+            <option value="perModelIncentive">Per Model Incentive</option>
+          </select>
+
+          <div id="perCarIncentiveSection">
+            <h2 style="color: #1f1a17">Per Car Incentive</h2>
+            <button type="button" id="addPairButton">Add Input</button>
+            <button type="button" id="removePairButton">Remove Input</button>
+
+            <div id="pairs-container" style="color: #1f1a17; margin-top: 20px">
+              <div class="pair-container">
+                <label for="cars" style="color: #1f1a17">Number of Cars:</label>
+                <input type="number" name="cars" />
+                <label for="incentive" style="color: #1f1a17">Incentive:</label>
+                <input type="number" name="incentive" step="0.01" />
+              </div>
+            </div>
+          </div>
+
+          <div id="perModelIncentiveSection" class="hidden">
+            <!-- PerModel 1 -->
+            <h2 style="color: #1f1a17">Per Model Incentive</h2>
+
+            <button type="button" id="addPerModelPairButton">Add Input</button>
+
+            <button type="button" id="removePerModelPairButton">
+              Remove Input
+            </button>
+
+            <div id="perModelPairContainer"></div>
+
+            <!-- PerModel 2 -->
+            <h2 style="color: #1f1a17">Incentive Based on Numbers</h2>
+            <button type="button" id="addNumberPairButton">Add Input</button>
+            <button type="button" id="removeNumberPairButton">
+              Remove Input
+            </button>
+
+            <div
+              id="Number-pairs-container"
+              style="color: #1f1a17; margin-top: 20px"
+            ></div>
+
+            <!-- PerModel 3 Progressive -->
+
+            <!-- <h2 style="color: #1F1A17;">Progressive Model Incentive</h2>
+<button type="button" id="addProgressivePairButton">Add Input</button>
+<button type="button" id="removeProgressivePairButton">Remove Input</button>
+
+<div id="Progressive-pairs-container" style="color: #1F1A17; margin-top: 20px;">
+
+</div> -->
+          </div>
+        </div>
+
+        <!-- Special Car Incentive -->
+        <button type="button" class="collapsible">Special Car Incentive</button>
+
+        <div class="specialCarPairSection hidden" id="specialCarPairSection">
+          <h2 style="color: #1f1a17">Special Car Incentive</h2>
+          <button type="button" id="addSpecialCarPairButton">Add Input</button>
+          <button type="button" id="removeSpecialCarPairButton">
+            Remove Input
+          </button>
+          <div id="specialCarPairContainer"></div>
+        </div>
+
+        <button type="button" class="collapsible">Exchange Incentive</button>
+
+        <div
+          class="ExchangePairSection hidden"
+          id="ExchangePairSection"
+          style="color: #1f1a17"
+        >
+          <h2 style="color: #1f1a17">Exchange Status Incentive</h2>
+
+          <label for="exchangeSelect" style="color: #1f1a17"
+            >Select Exchange Type:</label
+          >
+          <select id="exchangeSelect">
+            <option value="progressiveTypeIncentive">Progressive Type</option>
+            <option value="totalNumberIncentive">Total Number Type</option>
+          </select>
+
+          <button type="button" id="addExchangePairButton">Add Input</button>
+          <button type="button" id="removeLastExchangePairButton">
+            Remove Input
+          </button>
+
+          <div id="Exchange-pairs-container"></div>
+        </div>
+
+        <button type="button" class="collapsible">Complaint Deduction</button>
+
+        <div
+          class="ComplaintSection hidden"
+          id="ComplaintSection"
+          style="color: #1f1a17; margin-top: 20px"
+        >
+          <h2 style="color: #1f1a17">Complaint Status Deduction</h2>
+
+          <button type="button" id="addComplaintPairButton">Add Input</button>
+          <button type="button" id="removeLastComplaintPairButton">
+            Remove Input
+          </button>
+
+          <div id="Complaint-pairs-container"></div>
+        </div>
+
+        <button type="button" class="collapsible">SuperCar Incentive</button>
+
+        <div class="SuperCar-container hidden" style="padding: 20px">
+          <h2 style="color: #1f1a17">Super Car Incentive</h2>
+          <div
+            id="SuperCar"
+            style="
+              display: flex;
+              justify-content: space-between;
+              padding-left: 30px;
+              padding-right: 10px;
+              margin-bottom: 20px;
+            "
+          >
+            <!-- Left column with the selection criteria -->
+            <div
+              class="SuperCarSelection-container"
+              style="
+                display: flex;
+                flex-direction: column;
+                flex: 1;
+                margin-right: 5px;
+              "
+            >
+              <h3 style="color: #1f1a17">
+                Select Super Car Incentive Criteria Check:
+              </h3>
+
+              <div
+                id="SuperCarSelection"
+                style="display: flex; flex-direction: column; gap: 10px"
+              >
+                <div
+                  class="SuperDiscount-input-container"
+                  style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-start;
+                    gap: 10px;
+                  "
+                >
+                  <input
+                    type="checkbox"
+                    id="zeroDiscountCheck"
+                    name="superCarCheck"
+                    value="zeroDiscountOnVehicle"
+                    onchange="document.getElementById('DiscountValue').classList.toggle('hidden', !this.checked)"
+                  />
+                  <label for="zeroDiscountCheck"
+                    >Max Possible Discount on Vehicle:</label
+                  >
+
+                  <input
+                    type="number"
+                    id="DiscountValue"
+                    name="DiscountValue"
+                    placeholder="Enter Discount Value"
+                    class="hidden"
+                  />
+                </div>
+
+                <!-- <div class="SuperMGADiscount-input-container" style="display: flex; align-items: center; justify-content: flex-start; gap: 10px;">
+
+                    <input type="checkbox" id="MGADiscountCheck" name="superCarCheck" value="MGADiscountCheck" onchange="document.getElementById('MGADiscountValue').classList.toggle('hidden', !this.checked)">
+                      <label for="MGADiscountCheck">Max Possible Discount on Vehicle:</label>
+                      
+                      <input type="number" id="MGADiscountValue" name="MGADiscountValue" placeholder="Enter MGA Discount Value" class="hidden">
+                  </div> -->
+
+                <div
+                  class="input-container"
+                  style="
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-start;
+                    gap: 10px;
+                  "
+                >
+                  <input
+                    type="checkbox"
+                    id="MGASaleCheck"
+                    name="superCarCheck"
+                    value="MGASaleGT30K"
+                    onchange="document.getElementById('MGASaleValue').classList.toggle('hidden', !this.checked)"
+                  />
+                  <label for="MGASaleCheck">MGA Sale is Greater Than:</label>
+
+                  <input
+                    type="number"
+                    id="MGASaleValue"
+                    name="MGASaleValue"
+                    placeholder="Enter MGA Sale Value"
+                    class="hidden"
+                  />
+                </div>
+
+                <div
+                  class="input-container"
+                  style="
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: center;
+                    gap: 10px;
+                  "
+                >
+                  <input
+                    type="checkbox"
+                    name="superCarCheck"
+                    value="royalPlatinum"
+                  />
+
+                  <label> EW Sale Of 5 Years (Royal Platinum)</label>
+                </div>
+
+                <div
+                  class="input-container"
+                  style="
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: center;
+                    gap: 10px;
+                  "
+                >
+                  <input
+                    type="checkbox"
+                    name="superCarCheck"
+                    value="insurance"
+                  />
+
+                  <label> Insurance</label>
+                </div>
+
+                <div
+                  class="input-container"
+                  style="
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: center;
+                    gap: 10px;
+                  "
+                >
+                  <input type="checkbox" name="superCarCheck" value="CCP" />
+
+                  <label> CCP (2 Years)</label>
+                </div>
+
+                <div
+                  class="input-container"
+                  style="
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: center;
+                    gap: 10px;
+                  "
+                >
+                  <input type="checkbox" name="superCarCheck" value="MSR" />
+                  <label> MSR</label>
+                </div>
+              </div>
+            </div>
+            <!-- Right column with the incentive input -->
+            <div
+              class="Incentive-container"
+              style="
+                display: flex;
+                flex-direction: column;
+                flex: 1;
+                justify-content: center;
+                align-items: center;
+              "
+            >
+              <label for="SuperCarIncentive" style="color: #1f1a17"
+                >Enter Super Car Incentive :</label
+              >
+              <input
+                type="number"
+                name="SuperCarIncentive"
+                id="SuperCarIncentive"
+                style="width: 60%; margin-top: 10px"
+              />
+            </div>
+          </div>
+        </div>
+
+        <button type="button" class="collapsible">CDI Incentive</button>
+
+        <div class="CDI-section hidden">
+          <h2 style="color: #1f1a17">CDI scores</h2>
+          <label for="inputType" style="color: #1f1a17"
+            >Select Input Type:</label
+          >
+          <select id="inputType">
+            <option value="greater">Greater Than</option>
+            <option value="less">Less Than</option>
+            <option value="range">Range</option>
+          </select>
+          <button type="button" id="addInputButton">Add Input</button>
+          <button type="button" id="removeCDIInput">Remove Input</button>
+
+          <div id="cdiInputs"></div>
+        </div>
+
+        <button type="button" class="collapsible">Discount Incentive</button>
+
+        <div class="discountIncentive-section hidden">
+          <h2 style="color: #1f1a17">Discount Incentive</h2>
+          <button type="button" id="addDiscountInputButton">Add Slab</button>
+          <button type="button" id="removeDiscountInput">Remove Slab</button>
+
+          <div id="DiscountInputsContainer"></div>
+        </div>
+
+        <button type="button" class="collapsible">MGA Incentive</button>
+        <div class="MGA-section hidden">
+          <h2 style="color: #1f1a17">MGA Incentive</h2>
+          <br />
+          <button type="button" id="addMGAInput">Add Input</button>
+          <button type="button" id="removeMGAInput">Remove Input</button>
+
+          <div id="MGAinputsContainer"></div>
+        </div>
+
+        <button type="button" class="collapsible">
+          Extended Warranty Incentive
+        </button>
+        <div class="EW-section hidden">
+          <h2 style="color: #1f1a17">Extended Warranty Incentive</h2>
+          <label for="EWinputType">Select Input Type:</label>
+          <select id="EWinputType">
+            <option value="greater">Greater Than or Equal To</option>
+            <option value="less">Less Than or Equal To</option>
+            <option value="range">Range</option>
+          </select>
+          <button type="button" id="addEWInputButton">Add Input</button>
+          <button type="button" id="removeEWInputButton">Remove Input</button>
+
+          <!-- Container for dynamically added inputs -->
+          <div id="EWinputsContainer"></div>
+        </div>
+
+        <button type="button" class="collapsible">
+          MSR AutoCard Incentive
+        </button>
+
+        <div class="MSR-section hidden">
+          <h2 style="color: #1f1a17">MSR Incentive</h2>
+          <label for="MSRinputType">Select Input Type:</label>
+          <select id="MSRinputType">
+            <option value="greater">Greater Than or Equal To</option>
+            <option value="less">Less Than or Equal To</option>
+            <option value="range">Range</option>
+          </select>
+
+          <button type="button" id="addMSRInputButton">Add Input</button>
+          <button type="button" id="removeMSRInputButton">Remove Input</button>
+
+          <!-- Container for dynamically added inputs -->
+          <div id="MSRinputsContainer"></div>
+        </div>
+
+        <button type="button" class="collapsible">CCP Incentive</button>
+        <div class="ccp-section hidden">
+          <h2 style="color: #1f1a17">CCP Incentive</h2>
+          <label for="CCPinputType">Select Input Type:</label>
+          <select id="CCPinputType">
+            <option value="greater">Greater Than or Equal To</option>
+            <option value="less">Less Than or Equal To</option>
+            <option value="range">Range</option>
+          </select>
+
+          <button type="button" id="addCCPInputButton">Add Input</button>
+          <button type="button" id="removeCCPInputButton">Remove Input</button>
+
+          <!-- Container for dynamically added inputs -->
+          <div id="CCPinputsContainer"></div>
+        </div>
+
+        <button type="button" class="collapsible">MSSF Incentive</button>
+        <div class="MSSF-section hidden">
+          <h2 style="color: #1f1a17">MSSF Incentive</h2>
+          <label for="MSSFinputType">Select Input Type:</label>
+          <select id="MSSFinputType">
+            <option value="greater">Greater Than or Equal To</option>
+            <option value="less">Less Than or Equal To</option>
+            <option value="range">Range</option>
+          </select>
+
+          <button type="button" id="addMSSFInputButton">Add Input</button>
+          <button type="button" id="removeMSSFInputButton">Remove Input</button>
+
+          <!-- Container for dynamically added inputs  -->
+          <div id="MSSFinputsContainer"></div>
+        </div>
+
+        <br />
+        <button id="resetButton">Reset</button>
+        <button type="submit">Submit</button>
+        <!-- <button class="reset-button">Reset</button> -->
+      </form>
+      <!-- input for Master Excel -->
+    </div>
+
+    <table class="oldDSE-table"></table>
+    <table class="new-table"></table>
+
+    <script>
+      // JavaScript to handle the collapsible functionality
+      document.addEventListener("DOMContentLoaded", function () {
+        var coll = document.getElementsByClassName("collapsible");
+        for (var i = 0; i < coll.length; i++) {
+          coll[i].addEventListener("click", function () {
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+
+            content.classList.toggle("hidden");
+
+            //     if (content.classList.contains("hidden")) {
+            //   content.style.maxHeight = null;
+            // } else {
+            //   content.style.maxHeight = content.scrollHeight + "px";
+            // }
+          });
+        }
+      });
+    </script>
+
+    <script src="preload.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+  </body>
+</html>
